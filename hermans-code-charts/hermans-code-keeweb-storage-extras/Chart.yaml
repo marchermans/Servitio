@@ -1,0 +1,5 @@
+apiVersion: v2
+name: parchment-keeweb-storage-extras
+description: The resources that add additional resources to the keeweb storage service
+type: application
+version: 1.0.0
