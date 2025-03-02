@@ -39,6 +39,8 @@ spec:
               storageClassName: longhorn
               accessModes: ReadWriteMany
               storage: 10Gi
+            env:
+              DB_HOST: "hermans-code-finance-firefly-db.hermans-code-finance.svc.cluster.local"
 
     - repoURL: {{ .Values.repository.url }}
       path: hermans-code-charts/hermans-code-finance-extras
