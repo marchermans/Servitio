@@ -1,0 +1,5 @@
+apiVersion: v2
+name: hermans-code-finance-extras
+description: The resources that add additional resources to the finance service for hermans service
+type: application
+version: 1.0.0
