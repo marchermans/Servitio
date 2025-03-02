@@ -21,16 +21,14 @@ spec:
         releaseName: hermans-code-finance
         valuesObject:
           firefly-db:
-            enabled: false
             storage:
               class: longhorn
-              accessModes: ReadWriteMany
+              accessModes: ReadWriteOnce
               dataSize: 10Gi
           firefly-iii:
-            enabled: false
             persistence:
               storageClassName: longhorn
-              accessModes: ReadWriteMany
+              accessModes: ReadWriteOnce
               storage: 10Gi
             ingress:
               enabled: true
