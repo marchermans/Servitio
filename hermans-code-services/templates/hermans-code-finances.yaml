@@ -21,6 +21,8 @@ spec:
         releaseName: hermans-code-finance
         valuesObject:
           firefly-db:
+            config:
+              DBHOST: "hermans-code-finance-firefly-db"
             storage:
               class: longhorn
               accessModes: ReadWriteOnce
@@ -41,7 +43,7 @@ spec:
                 - finance.hermans-code.com
             config:
               env:
-                DB_HOST: "hermans-code-finance-firefly-db.hermans-code-finance.svc.cluster.local"
+                DB_HOST: "hermans-code-finance-firefly-db"
 
     - repoURL: {{ .Values.repository.url }}
       path: hermans-code-charts/hermans-code-finance-extras
