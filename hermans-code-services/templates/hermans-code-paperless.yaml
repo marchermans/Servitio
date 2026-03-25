@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hermans-code-paperless
+  namespace: argocd
+spec:
+  project: hermans-code
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: hermans-code-paperless
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  sources:
+    - repoURL: https://charts.worli.dev
+      chart: paperless-ngx
+      targetRevision: "0.*"
+      helm:
+        releaseName: hermans-code-paperless
+        valuesObject:
+          paperless:
+            ingress:
+              enabled: true
+              className: nginx
+              annotations:
+                cert-manager.io/cluster-issuer: letsencrypt-dns
+              hosts:
+                - host: documents.hermans-code.com
+                  paths:
+                    - path: /
+                      pathType: Prefix
+              tls:
+                - secretName: paperless-ngx-tls
+                  hosts:
+                    - documents.hermans-code.com
