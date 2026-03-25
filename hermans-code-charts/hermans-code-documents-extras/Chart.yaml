@@ -1,0 +1,7 @@
+apiVersion: v2
+name: hermans-code-documents-extras
+description: Extra Kubernetes resources for the documents service, including Proton Mail Bridge
+type: application
+version: 1.0.0
+appVersion: "latest"
+

@@ -40,3 +40,7 @@ spec:
                 - secretName: paperless-ngx-tls
                   hosts:
                     - documents.hermans-code.com
+                    
+    - repoURL: {{ .Values.repository.url }}
+      path: hermans-code-charts/hermans-code-documents-extras
+      targetRevision: HEAD

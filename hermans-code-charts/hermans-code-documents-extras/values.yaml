@@ -1,0 +1,34 @@
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: ghcr.io/videocurio/proton-mail-bridge
+  tag: latest
+  pullPolicy: IfNotPresent
+
+container:
+  smtpPort: 25
+  imapPort: 143
+
+env:
+  CONTAINER_SMTP_PORT: "25"
+  CONTAINER_IMAP_PORT: "143"
+
+service:
+  type: ClusterIP
+  port: 143
+
+persistence:
+  enabled: true
+  size: 1Gi
+  accessMode: ReadWriteOnce
+  storageClassName: ""
+  mountPath: /root
+  existingClaim: ""
+
+resources: {}
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
