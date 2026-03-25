@@ -21,6 +21,9 @@ spec:
         releaseName: hermans-code-paperless
         valuesObject:
           paperless:
+            env:
+              values:
+                PAPERLESS_URL: "https://documents.hermans-code.com"
             ingress:
               enabled: true
               className: nginx
