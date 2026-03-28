@@ -21,6 +21,15 @@ spec:
         releaseName: hermans-code-paperless
         valuesObject:
           paperless:
+            persistence:
+              data:
+                size: 100Gi
+              media:
+                size: 100Gi
+              export:
+                size: 50Gi
+              consume:
+                size: 50Gi
             env:
               values:
                 PAPERLESS_URL: "https://documents.hermans-code.com"
