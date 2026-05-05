@@ -31,9 +31,6 @@ spec:
                 cert-manager.io/cluster-issuer: letsencrypt-dns
                 external-dns.alpha.kubernetes.io/target: cluster.ldtteam.com
                 nginx.ingress.kubernetes.io/ssl-redirect: "true"
-                nginx.ingress.kubernetes.io/auth-type: basic
-                nginx.ingress.kubernetes.io/auth-secret: budget-auth
-                nginx.ingress.kubernetes.io/auth-realm: "hermans-code Budget"
               hosts:
                 - host: budget.hermans-code.com
                   paths:
