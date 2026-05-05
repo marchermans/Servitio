@@ -1,0 +1,76 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hermans-code-budget
+  namespace: argocd
+spec:
+  project: hermans-code
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: hermans-code-budget
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+  sources:
+    - repoURL: ghcr.io/marchermans/charts
+      chart: actual-budget
+      targetRevision: "0.*"
+      helm:
+        releaseName: hermans-code-budget
+        valuesObject:
+          actual:
+            persistence:
+              enabled: true
+              size: 10Gi
+            ingress:
+              enabled: true
+              className: nginx
+              annotations:
+                cert-manager.io/cluster-issuer: letsencrypt-dns
+                external-dns.alpha.kubernetes.io/target: cluster.ldtteam.com
+                nginx.ingress.kubernetes.io/ssl-redirect: "true"
+                nginx.ingress.kubernetes.io/auth-type: basic
+                nginx.ingress.kubernetes.io/auth-secret: budget-auth
+                nginx.ingress.kubernetes.io/auth-realm: "hermans-code Budget"
+              hosts:
+                - host: budget.hermans-code.com
+                  paths:
+                    - path: /
+                      pathType: Prefix
+              tls:
+                - secretName: actual-budget-tls
+                  hosts:
+                    - budget.hermans-code.com
+
+          enableActual:
+            enabled: true
+            persistence:
+              enabled: true
+              size: 5Gi
+            actualServerUrl: "https://budget.hermans-code.com"
+            ingress:
+              enabled: true
+              className: nginx
+              annotations:
+                cert-manager.io/cluster-issuer: letsencrypt-dns
+                external-dns.alpha.kubernetes.io/target: cluster.ldtteam.com
+                nginx.ingress.kubernetes.io/ssl-redirect: "true"
+                nginx.ingress.kubernetes.io/auth-type: basic
+                nginx.ingress.kubernetes.io/auth-secret: budget-auth
+                nginx.ingress.kubernetes.io/auth-realm: "hermans-code Budget Sync"
+              hosts:
+                - host: budget-sync.hermans-code.com
+                  paths:
+                    - path: /
+                      pathType: Prefix
+              tls:
+                - secretName: enable-actual-tls
+                  hosts:
+                    - budget-sync.hermans-code.com
+
+    - repoURL: {{ .Values.repository.url }}
+      path: hermans-code-charts/hermans-code-budget-extras
+      targetRevision: HEAD
+

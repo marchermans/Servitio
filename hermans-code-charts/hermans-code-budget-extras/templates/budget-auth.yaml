@@ -1,0 +1,15 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: budget-auth
+  namespace: hermans-code-budget
+spec:
+  encryptedData:
+    auth: AgByUwRoY5losUYC7IzJIE8VD1SHxeGWVNBmnkc0gfy4n0hEU4S1hHgZhFy6BYcYYO0ExhsnLpMmfEZdshWPK7Ua/1/nQFVsNhJICOXLaWsJt2XYnRoqkiZJ/p5W9zMM/iAzmfupbn6lrDbg2CmmXc1adI6A0a7Wfc621FI0XwzkkBUfL1ra3oydUNqw1ErhQs+Qq4Y8pfQamA3Azr8JbsphTrHv8F622hdwLdwxkABpK2QJvhIy7YJGBSbHFiIIxkGZxlld8rL+jyy46rPNxXYUDym2mL90u6ra0C+HF0JrtDlkc3QKd7+hreeanYUUVJRrQ4EkxYQsl0g39hxiouvCIPivBDRiP5wuBi1JR8445SNHHKfr9G6Nd2wQA+xSqYA5NzsJnmEHB9hap3nPq5XtAdyiWeWKO+NL3nUssffIPyhmLHJB+HZsOFnLul+ZyTT1igEhGfk+ZP4rGYjuWD0dZlyiKv7xzQef1m+N8iVdvVPmgt14EJcktGnbsFz9bJTFVk47P72ttBtboaVwKNA9bJH+ULVRM5DXd35u4AqNiCa5rnruJG4NBemcGy4ZT99py0YerrTMPVoCva6f2X42Lx+GniGykYedxVTKQhEYjttmYJLjpyj8+8SIoOu+twV32JbLoZShAaWhZXcN6hTnj6ub9JVoQHt5vKOMQkbcd2n2UBJ89Z84KDlgjzs/rohOv4mcYQ08Vn6vNuzJqETq8T0nN/Fd8OeTS8kagIdUsBKO+U7mezGUhDXoL3H6ANgJHwo=
+  template:
+    metadata:
+      name: budget-auth
+      namespace: hermans-code-budget
+      labels:
+        app.kubernetes.io/part-of: hermans-code-budget
