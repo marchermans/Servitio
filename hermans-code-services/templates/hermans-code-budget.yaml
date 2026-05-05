@@ -43,6 +43,9 @@ spec:
 
           enableActual:
             enabled: true
+            env:
+              PUBLIC_URL: "https://budget-sync.hermans-code.com"
+              SSL_ENABLED: "true"
             persistence:
               enabled: true
               size: 5Gi
