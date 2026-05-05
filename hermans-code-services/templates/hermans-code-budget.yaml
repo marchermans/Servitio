@@ -14,7 +14,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
   sources:
-    - repoURL: ghcr.io/marchermans/charts
+    - repoURL: https://marchermans.github.io/BudgettedChart
       chart: actual-budget
       targetRevision: "0.*"
       helm:
