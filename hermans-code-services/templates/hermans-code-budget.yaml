@@ -44,6 +44,7 @@ spec:
           enableActual:
             enabled: true
             env:
+              LOG_LEVEL: "debug"
               PUBLIC_URL: "https://budget-sync.hermans-code.com"
               SSL_ENABLED: "false"
             persistence:
