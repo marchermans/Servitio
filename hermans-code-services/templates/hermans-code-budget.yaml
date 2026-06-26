@@ -43,6 +43,8 @@ spec:
 
           enableActual:
             enabled: true
+            image:
+              tag: 2.4.2
             env:
               LOG_LEVEL: "debug"
               PUBLIC_URL: "https://budget-sync.hermans-code.com"
